@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors */
+  --color-canvas: #FDFBF7;
+  --color-ink: #333333;
+  --color-accent: #E68A5C;
+  
+  /* Perfume Brand Typography */
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "DM Sans", sans-serif;
+  
+  /* Custom Spacing for Buttons */
+  --letter-spacing-button: 0.15em;
+}
+
+@layer base {
+  button {
+    @apply transition-all duration-300 ease-out uppercase font-sans font-medium tracking-[var(--letter-spacing-button)];
+  }
+}
+
+@layer components {
+  button {
+    /* High-end button typography */
+    font-size: 0.75rem; /* Smaller text often feels more luxury */
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(10px); 
+    filter: blur(10px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+    filter: blur(0); 
+  }
+}
+
+@keyframes floatScent {
+  0% {
+    transform: translateY(100vh) translateX(0);
+    opacity: 0;
+  }
+  20% { opacity: 0.4; }
+  80% { opacity: 0.4; }
+  100% {
+    transform: translateY(-20vh) translateX(40px);
+    opacity: 0;
+  }
+}
+
+.scent-particle {
+  position: absolute;
+  background: radial-gradient(circle, rgba(230, 138, 92, 0.3) 0%, rgba(255,255,255,0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(8px);
+  animation: floatScent var(--duration) linear infinite;
+  animation-delay: var(--delay);
+  left: var(--left);
+  width: var(--size);
+  height: var(--size);
+}
+
+.animate-fade-in {
+  animation: fadeIn 1.2s ease-out forwards;
+}
