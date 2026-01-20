@@ -30,41 +30,42 @@ function About() {
         </h1>
       </div>
 
-      <div className="max-w-4xl mx-auto relative z-10">
-        {/* Brand Image - Full bleed elegance */}
+      <div className="max-w-4xl mx-auto relative z-10 mb-10">
+        {/* Brand Image */}
         <div className="aspect-[16/10] rounded-3xl overflow-hidden mb-20 shadow-2xl">
           <img
-            src="/about-brand.jpg" // Replace with your actual image path
+            src="/assets/maxi-hub-moodbard.jpg"
             alt="MAXI HUB brand aesthetic"
-            className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+            // className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+            className="w-full h-full object-cover transition-opacity hover:opacity-80 duration-400"
           />
         </div>
 
         {/* Philosophy Title */}
         {/* <h2 className="text-accent uppercase tracking-[0.3em] text-center text-lg block mb-6">Our Philosophy</h2> */}
-        <h2 className="font-serif text-4xl md:text-5xl text-center tracking-[0.3em] uppercase text-ink/60 mb-16">
+        <h2 className="font-serif italic text-3xl md:text-4xl text-center tracking-[0.3em] uppercase text-ink/60 mb-12">
           Our Philosophy
         </h2>
 
-        {/* Main Heading - Large, poetic, with generous letter spacing */}
-        <h1 className="font-serif text-6xl md:text-8xl text-center tracking-[0.15em] leading-tight text-ink mb-20 italic">
+        {/* Main Heading */}
+        <h1 className="font-serif text-4xl md:text-6xl text-center tracking-[0.15em] leading-tight text-ink mb-15 italic">
           Scents that linger
           <br />
           in the soul.
         </h1>
 
-        {/* Enhanced Story Paragraph - Refined, luxurious tone + elegant styling */}
+        {/*  Story Paragraph */}
         <div className="text-center space-y-8">
-          <p className="text-lg md:text-xl leading-relaxed tracking-[0.05em] text-ink/80 max-w-3xl mx-auto">
+          <p className="font-serif text-lg font-serif md:text-xl leading-relaxed tracking-[0.05em] text-ink/80 max-w-3xl mx-auto">
             MAXI HUB was born from a singular, timeless conviction: that true fragrance is an extension of the self fluid, evolving, and deeply personal.
           </p>
-          <p className="text-lg md:text-xl leading-relaxed tracking-[0.05em] text-ink/80 max-w-3xl mx-auto">
+          <p className="font-serif text-lg md:text-xl leading-relaxed tracking-[0.05em] text-ink/80 max-w-3xl mx-auto">
             We travel the world to source the rarest botanicals delicate florals from hidden gardens, ancient woods from remote forests, and exotic spices carried on distant winds. Each ingredient is chosen not just for its aroma, but for its ability to transform throughout the day, unfolding in layers that mirror your mood, your moments, your essence.
           </p>
-          <p className="text-lg md:text-xl leading-relaxed tracking-[0.05em] text-ink/80 max-w-3xl mx-auto">
+          <p className="font-serif text-lg md:text-xl leading-relaxed tracking-[0.05em] text-ink/80 max-w-3xl mx-auto">
             Our creations are more than perfumes... They are quiet companions, evoking confidence in the morning light, mystery under moonlight, and joy in fleeting instants. Designed to linger not only on the skin, but in memory.
           </p>
-          <p className="text-lg md:text-xl leading-relaxed tracking-[0.08em] font-medium text-accent mt-12">
+          <p className="font-serif italic text-lg md:text-xl leading-relaxed tracking-[0.08em] font-medium text-accent mt-12">
             Wear your mood. Live your scent.
           </p>
         </div>

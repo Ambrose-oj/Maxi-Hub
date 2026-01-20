@@ -1,68 +1,103 @@
 import { useCart } from '../context/CartContext';
+import { products } from '../../data/products';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 
-function Shop() {
+function Shop({ onCartClick }) { // Keeping onCartClick as a prop
   const { addToCart } = useCart();
-  const products = [
-    { id: 1, name: "Velvet Oud", price: "250,000", mood: "Woody", image: "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&q=80&w=1000" },
-    { id: 2, name: "Morning Dew", price: "115,000", mood: "Floral", image: "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&q=80&w=1000" },
-    { id: 3, name: "Midnight Musk", price: "340,000", mood: "Musk", image: "https://images.unsplash.com/photo-1598634222670-87c5f558119c?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb" },
-    { id: 4, name: "Sunday Morning", price: "95,000", mood: "Fresh", image: "https://images.unsplash.com/photo-1590736704728-f4730bb30770?auto=format&fit=crop&q=80&w=1000" },
-    { id: 5, name: "Midnight Tokyo", price: "190,000", mood: "Vanilla", image: "https://static.vecteezy.com/system/resources/previews/068/200/641/non_2x/mysterious-black-perfume-bottle-purple-smoke-scented-productgraphy-free-photo.jpg" },
-    // { id: 8, name: "Apricot Sky", price: "120,000", mood: "Energetic & Sweet", image: "https://static.vecteezy.com/system/resources/previews/068/200/641/non_2x/mysterious-black-perfume-bottle-purple-smoke-scented-productgraphy-free-photo.jpg" },
-    { id: 6, name: "Desert Rose", price: "160,000", mood: "Fresh", image: "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=1000" },
-    { id: 7, name: "Wild Muse", price: "135,000", mood: "Timber", image: "https://images.pexels.com/photos/1961792/pexels-photo-1961792.jpeg?referrer=grok.com" },
-    { id: 8, name: "Apricot Sky", price: "120,000", mood: "Energetic & Sweet", image: "https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&q=80&w=1000" },
-    // { id: 8, name: "Apricot Sky", price: "120,000", mood: "Energetic & Sweet", image: "https://images.unsplash.com/photo-1725182524928-bc1de6a87d82?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&referrer=grok.com" },
-    { id: 9, name: "Choco Musk et Franc Vile", price: "75,000", mood: "Discovery Set", image: "https://images.unsplash.com/photo-1557170334-a9632e77c6e4?auto=format&fit=crop&q=80&w=1000" },
-  ];
-  
-const handleAdd = (product) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
+
+  const query = searchParams.get('q')?.trim() || '';
+
+  // Filter products by name and mood (case-insensitive)
+  const filteredProducts = query
+    ? products.filter((product) =>
+        product.name.toLowerCase().includes(query.toLowerCase()) ||
+        (product.mood && product.mood.toLowerCase().includes(query.toLowerCase()))
+      )
+    : products;
+
+  const handleAdd = (product) => {
     addToCart(product);
-    onCartClick(); 
+    if (onCartClick) onCartClick(); // Opens the cart drawer after adding
   };
+
+  const handleClearSearch = () => {
+    setSearchParams({}); // Removes the ?q= param → back to full collection
+    // Alternative: navigate('/shop');
+  };
+
   return (
-    <div className="pt-32 px-6 min-h-screen bg-canvas">
+    <div className="pt-32 px-6 min-h-screen bg-canvas mb-15">
       <div className="max-w-7xl mx-auto">
-        {/* Title */}
-        <h2 className="font-serif text-5xl md:text-6xl mb-20 text-ink italic text-center tracking-wide">
-          The Collection
-        </h2>
+        {/* Title + Clear Search Button */}
+        <div className="text-center mb-20">
+          <h2 className="font-serif text-2xl md:text-3xl pb-5 text-ink italic tracking-wide">
+            {query ? `Search results for "${query}"` : 'The Collection'}
+          </h2>
+
+          {query && (
+            <button
+              onClick={handleClearSearch}
+              className="mt-6 text-sm uppercase tracking-[0.2em] text-ink/60 hover:text-ink transition"
+            >
+              Clear search →
+            </button>
+          )}
+        </div>
+
+        {/* No Results Message */}
+        {query && filteredProducts.length === 0 && (
+          <p className="text-center text-ink/60 text-lg py-20">
+            No scents found for "{query}". Try searching for something else.
+          </p>
+        )}
 
         {/* Product Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
-          {products.map((product) => (
-            <div
-              key={product.id}
-              className="group cursor-pointer"
-            >
-              <div className="aspect-[4/5] rounded-3xl overflow-hidden bg-white/10 backdrop-blur-md border border-white/20 shadow-xl group-hover:shadow-2xl group-hover:scale-105 transition-all duration-500 ease-out">
-                {/* Replace with real image later: <img src={product.image} alt="" className="w-full h-full object-cover" /> */}
-                 <img src={product.image} alt="" className="w-full h-full object-cover" />
+        {(query ? filteredProducts.length > 0 : true) && (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
+            {filteredProducts.map((product) => (
+              <div
+                key={product.id}
+                className="group cursor-pointer flex flex-col"
+              >
+                {/* Image */}
+                <div className="aspect-[4/5] rounded-3xl overflow-hidden bg-white/10 backdrop-blur">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+
+                {/* Text Content */}
+                <div className="flex flex-col flex-1 justify-between pt-6 min-h-[140px]">
+                  <div className="mb-5 text-center">
+                    <h3 className="font-serif text-2xl tracking-[0.2em] text-ink mb-4">
+                      {product.name}
+                    </h3>
+
+                    <p className="text-2xl font-medium text-accent tracking-wider mb-4">
+                      NGN {product.price}
+                    </p>
+
+                    <p className="text-sm uppercase tracking-[0.4em] text-ink/60">
+                      {product.mood}
+                    </p>
+                  </div>
+
+                  {/* Add to Bag Button */}
+                  <button
+                    onClick={() => handleAdd(product)}
+                    className="mt-auto mt-6 text-[10px] uppercase tracking-[0.2em] px-6 py-2 hover:bg-ink hover:text-white transition-all border border-ink/20 py-3"
+                  >
+                    Add to bag
+                  </button>
+                </div>
               </div>
-
-              {/* Text Content */}
-              <div className="mt-10 text-center">
-                <h3 className="font-serif text-2xl md:text-3xl tracking-[0.2em] text-ink mb-6">
-                  {product.name}
-                </h3>
-
-                <p className="text-3xl md:text-4xl font-medium text-accent tracking-wider mb-4"> 
-                 NGN {product.price}
-                </p>
-
-                <p className="text-sm uppercase tracking-[0.4em] text-ink/60">
-                  {product.mood}
-                </p>
-              </div>
-              <button 
-                  onClick={() => handleAdd(product)}
-                  className="mt-4 text-[10px] uppercase tracking-[0.2em] border border-ink/20 px-6 py-2 hover:bg-ink hover:text-white transition-all"
-            >
-                  Add to Bag
-              </button>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
@@ -70,4 +105,81 @@ const handleAdd = (product) => {
 
 export default Shop;
 
+
+
+
+// CODE WITHOUT THE SEARCH FUNCTION
+// import { useCart } from '../context/CartContext';
+// import { products } from '/data/products';
+
+// function Shop() {
+//   const { addToCart } = useCart();
+  
+// const handleAdd = (product) => {
+//     addToCart(product);
+//     onCartClick(); 
+//   };
+  
+//   return (
+//     <div className="pt-32 px-6 min-h-screen bg-canvas mb-15">
+//       <div className="max-w-7xl mx-auto">
+//         {/* Title */}
+//         <h2 className="font-serif text-5xl md:text-6xl mb-20 text-ink italic text-center tracking-wide">
+//           The Collection
+//         </h2>
+
+//         {/* Product Grid */}
+//         <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
+//           {products.map((product) => (
+//             <div key={product.id} className="group cursor-pointer flex flex-col">
+
+//           {/* Image */}
+//         <div className="aspect-[4/5] rounded-3xl overflow-hidden bg-white/10 backdrop-blur">
+//         <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+//       </div>
+
+//           {/* Text content – now flex column that grows */}
+
+//       <div className="flex flex-col flex-1 justify-between pt-6 min-h-[140px]">
+//         <div className='mb-5 text-center'>
+//           <h3 className="font-serif text-2xl md:text-2xl tracking-[0.2em] text-ink mb-4">
+//           {product.name}
+//           </h3>
+
+//                     {/* LINE CLAMP  */}
+//           {/* <h3 className="font-serif text-2xl md:text-3xl tracking-[0.2em] text-ink mb-4 line-clamp-2">
+//                   {product.name}
+//              </h3> */}
+
+
+//           {/* Price */}
+//           <p className="text-2xl md:text-2xl font-medium text-accent tracking-wider mb-4">
+//            NGN {product.price}
+//           </p>
+
+//           {/* Mood */}
+//           <p className="text-sm uppercase tracking-[0.4em] text-ink/60">
+//             {product.mood}
+//           </p>
+//         </div>
+
+//             {/* Button pushed to bottom */}
+//         <button
+//             onClick={() => handleAdd(product)}
+//             className="mt-auto mt-6 text-[10px] uppercase tracking-[0.2em] px-6 py-2 hover:bg-ink hover:text-white transition-all border border-ink/20 py-3"
+//         >
+//             Add to Bag
+//         </button>
+//       </div>
+//     </div>
+    
+    
+//           ))}
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default Shop;
 
