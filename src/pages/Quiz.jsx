@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useCart } from '../context/CartContext';
-import { products } from '../../data/products'; 
+import { products } from '../../data/Products.jsx'; 
 
 const Quiz = () => {
   const { addToCart } = useCart();
