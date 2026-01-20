@@ -1,5 +1,5 @@
 import { useCart } from '../context/CartContext';
-import { products } from '../../data/products.jsx';
+import { products } from '../../data/Products.jsx';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 
 function Shop({ onCartClick }) { // Keeping onCartClick as a prop
