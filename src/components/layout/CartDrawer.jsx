@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { X, Plus, Minus, Sparkles } from 'lucide-react';
 import { useCart } from '../../context/CartContext'; 
-import { products } from '/data/products';
+import { products } from "../../../data/Products";
 
 const CartDrawer = ({ isOpen, onClose }) => {
   const { cart, addToCart, removeFromCart, updateQuantity } = useCart();
