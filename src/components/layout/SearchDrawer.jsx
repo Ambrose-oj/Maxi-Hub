@@ -33,7 +33,7 @@ const SearchDrawer = ({ isOpen, onClose }) => {
         <div className="max-w-4xl mx-auto px-6 py-8">
           <div className="flex items-center justify-between mb-8">
             <h2 className="font-serif italic text-ink/40 text-sm tracking-widest uppercase">Search Collection</h2>
-            <button onClick={onClose} className="hover:rotate-90 transition-transform duration-500">
+            <button onClick={onClose} className="hover:rotate-90 active:rotate-90 transition-transform duration-500">
               <X className="w-6 h-6 text-ink" />
             </button>
           </div>
@@ -59,7 +59,7 @@ const SearchDrawer = ({ isOpen, onClose }) => {
                 {filteredProducts.map((product) => (
                   <div 
                     key={product.id} 
-                    className="flex items-center gap-4 p-4 bg-white/40 hover:bg-white rounded-xl transition-colors group cursor-pointer border border-transparent hover:border-ink/5"
+                    className="flex items-center gap-4 p-4 bg-white/40 hover:bg-white active:bg-white rounded-xl transition-colors group cursor-pointer border border-transparent hover:border-ink/5 active:border-ink/5"
                     onClick={() => {
                         addToCart(product);
                         // Optional: onClose(); // Close search after adding?
@@ -71,13 +71,13 @@ const SearchDrawer = ({ isOpen, onClose }) => {
                       className="w-16 h-20 object-cover rounded-md shadow-sm"
                     />
                     <div className="flex-1">
-                      <h4 className="font-serif text-lg text-ink group-hover:text-accent transition-colors">{product.name}</h4>
+                      <h4 className="font-serif text-lg text-ink group-hover:text-accent group-active:text-accent transition-colors">{product.name}</h4>
                       <p className="text-xs uppercase tracking-widest opacity-50">{product.mood}</p>
                       <p className="text-sm font-medium mt-1">NGN {product.price}</p>
                     </div>
                     
                     {/* Quick Add Button */}
-                    <button className="w-8 h-8 rounded-full border border-ink/10 flex items-center justify-center hover:bg-ink hover:text-white transition-all">
+                    <button className="w-8 h-8 rounded-full border border-ink/10 flex items-center justify-center hover:bg-ink active:bg-ink hover:text-white active:text-white transition-all">
                         <ArrowRight size={14} />
                     </button>
                   </div>

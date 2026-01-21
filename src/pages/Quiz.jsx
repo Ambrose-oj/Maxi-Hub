@@ -118,7 +118,7 @@ const Quiz = () => {
               </p>
               <button
                 onClick={() => addToCart(recommendation)}
-                className="m-auto text-[10px] uppercase tracking-[0.2em] px-6 py-2 hover:bg-ink hover:text-white transition-all border border-ink/20 py-3"
+                className="m-auto text-[10px] uppercase tracking-[0.2em] px-6 py-2 hover:bg-ink active:bg-ink hover:text-white active:text-white transition-all border border-ink/20 py-3"
               >
                 Add to bag
               </button>
@@ -127,7 +127,7 @@ const Quiz = () => {
 
           <button
             onClick={restartQuiz}
-            className="mt-12 text-sm uppercase tracking-[0.2em] text-ink/60 hover:text-ink transition"
+            className="mt-12 text-sm uppercase tracking-[0.2em] text-ink/60 hover:text-ink active:text-ink transition"
           >
             Retake Quiz →
           </button>
@@ -155,10 +155,10 @@ const Quiz = () => {
                 <button
                   key={mood}
                   onClick={() => handleNext(mood)} 
-                  className="group relative overflow-hidden border border-ink/10 py-5 px-8 text-center transition-all duration-500 hover:border-accent"
+                  className="group relative overflow-hidden border border-ink/10 py-5 px-8 text-center transition-all duration-500 hover:border-accent active:border-accent"
                 >
-                  <div className="absolute inset-0 bg-accent translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-                  <span className="relative z-10 uppercase tracking-[0.3em] text-[11px] font-medium text-ink group-hover:text-white transition-colors duration-500">
+                  <div className="absolute inset-0 bg-accent translate-y-full group-hover:translate-y-0 group-active:translate-y-0 transition-transform duration-500" />
+                  <span className="relative z-10 uppercase tracking-[0.3em] text-[11px] font-medium text-ink group-hover:text-white group-active:text-white transition-colors duration-500">
                     {mood}
                   </span>
                 </button>

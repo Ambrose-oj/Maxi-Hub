@@ -66,7 +66,7 @@ const CartDrawer = ({ isOpen, onClose }) => {
                 <p className="text-[10px] uppercase tracking-[0.2em] text-ink/40 mt-1">Your bag is empty</p>
               )}
             </div>
-            <button onClick={onClose} className="hover:rotate-90 transition-transform duration-500">
+            <button onClick={onClose} className="hover:rotate-90 active:rotate-90 transition-transform duration-500">
               <X className="h-5 w-5 text-ink" />
             </button>
           </div>
@@ -87,7 +87,7 @@ const CartDrawer = ({ isOpen, onClose }) => {
                   <img
                     src={item.image}
                     alt={item.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
+                    className="w-full h-full object-cover group-hover:scale-110 group-active:scale-110 transition-transform duration-1000"
                   />
                 </div>
 
@@ -107,7 +107,7 @@ const CartDrawer = ({ isOpen, onClose }) => {
                     <div className="flex items-center gap-2 border border-ink/10 rounded-full px-3 py-1 bg-white/30 backdrop-blur-sm">
                       <button
                         onClick={() => handleDecrement(item)}
-                        className="p-1 hover:scale-110 active:scale-95 transition-transform text-ink/80 hover:text-red-500"
+                        className="p-1 hover:scale-110 active:scale-95 transition-transform text-ink/80 hover:text-red-500 active:text-red-500"
                         aria-label="Decrease quantity"
                       >
                         <Minus size={10} strokeWidth={2} />
@@ -117,7 +117,7 @@ const CartDrawer = ({ isOpen, onClose }) => {
                       </span>
                       <button
                         onClick={() => handleIncrement(item)}
-                        className="p-1 hover:scale-110 active:scale-95 transition-transform text-ink/80 hover:text-green-600"
+                        className="p-1 hover:scale-110 active:scale-110 active:scale-95 transition-transform text-ink/80 hover:text-green-500 active:text-green-500"
                         aria-label="Increase quantity"
                       >
                         <Plus size={10} strokeWidth={2} />
@@ -126,7 +126,7 @@ const CartDrawer = ({ isOpen, onClose }) => {
 
                     <button
                       onClick={() => removeFromCart(item.id)}
-                      className="text-[10px] uppercase tracking-widest text-red-400 hover:text-red-600 transition-colors ml-4"
+                      className="text-[10px] uppercase tracking-widest text-red-400 hover:text-red-600 active:text-red-600 transition-colors ml-4"
                     >
                       Remove
                     </button>
@@ -159,7 +159,7 @@ const CartDrawer = ({ isOpen, onClose }) => {
                   className={`text-[10px] uppercase tracking-widest border border-ink/20 px-3 py-2 rounded-full transition-all ${
                     isDiscoveryInCart 
                       ? 'bg-ink/10 text-ink/50 cursor-not-allowed' 
-                      : 'hover:bg-ink hover:text-white'
+                      : 'hover:bg-ink active:bg-ink hover:text-white active:text-white cursor-pointer'
                   }`}
                 >
                   {isDiscoveryInCart ? 'Added' : 'Add'}
@@ -188,12 +188,12 @@ const CartDrawer = ({ isOpen, onClose }) => {
               className={`relative w-full py-6 rounded-full overflow-hidden group transition-all duration-700 ease-out shadow-2xl ${
                 cart.length === 0
                   ? 'bg-ink/20 cursor-not-allowed'
-                  : 'bg-ink text-white cursor-pointer hover:scale-[1.02] hover:shadow-ink/50'
+                  : 'bg-ink text-white cursor-pointer hover:scale-[1.02] active:scale-[1.02] hover:shadow-ink/50 active:shadow-ink/50'
               }`}
             >
-              <div className="absolute inset-0 bg-accent translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-1200 ease-in-out" />
-              <span className="relative z-10 uppercase tracking-[0.4em] text-[11px] font-bold transition-colors duration-400 group-hover:text-ink">
+              <div className="absolute inset-0 bg-accent translate-y-full group-hover:translate-y-0 active:translate-y-0 transition-transform duration-500 ease-out" />
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-150%] group-hover:translate-x-[150%] active:translate-x-[150%] transition-transform duration-1200 ease-in-out" />
+              <span className="relative z-10 uppercase tracking-[0.4em] text-[11px] font-bold transition-colors duration-400 group-hover:text-ink active:text-ink">
                 Proceed to Checkout
               </span>
             </button>

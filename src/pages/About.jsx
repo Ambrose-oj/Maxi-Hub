@@ -37,7 +37,7 @@ function About() {
             src="/assets/maxi-hub-moodbard.jpg"
             alt="MAXI HUB brand aesthetic"
             // className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
-            className="w-full h-full object-cover transition-opacity hover:opacity-80 duration-400"
+            className="w-full h-full object-cover"
           />
         </div>
 

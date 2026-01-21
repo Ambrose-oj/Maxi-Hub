@@ -39,7 +39,7 @@ function Shop({ onCartClick }) { // Keeping onCartClick as a prop
           {query && (
             <button
               onClick={handleClearSearch}
-              className="mt-6 text-sm uppercase tracking-[0.2em] text-ink/60 hover:text-ink transition"
+              className="mt-6 text-sm uppercase tracking-[0.2em] text-ink/60 hover:text-ink active:text-ink transition"
             >
               Clear search →
             </button>
@@ -89,7 +89,7 @@ function Shop({ onCartClick }) { // Keeping onCartClick as a prop
                   {/* Add to Bag Button */}
                   <button
                     onClick={() => handleAdd(product)}
-                    className="mt-auto mt-6 text-[10px] uppercase tracking-[0.2em] px-6 py-2 hover:bg-ink hover:text-white transition-all border border-ink/20 py-3"
+                    className="mt-auto mt-6 text-[10px] uppercase tracking-[0.2em] px-6 py-2 hover:bg-ink active:bg-ink hover:text-white active:text-white transition-all border border-ink/20 py-3"
                   >
                     Add to bag
                   </button>
