@@ -74,7 +74,7 @@ const Navbar = ({ onCartClick }) => {
               <button
                 ref={buttonRef}
                 onClick={() => setIsOpen(!isOpen)}
-                className="text-ink hover:text-accent transition-colors p-1"
+                className="text-ink hover:text-accent active:text-accent transition-colors p-1"
               >
                 <Menu className="h-6 w-6" />
               </button>
@@ -84,11 +84,11 @@ const Navbar = ({ onCartClick }) => {
             <div className="flex-shrink-0 flex items-center justify-center flex-1 md:flex-none">
               <Link
                 to="/"
-                className="font-serif text-2xl tracking-[0.1em] italic text-ink hover:opacity-80 transition-opacity"
+                className="font-serif text-2xl tracking-[0.1em] italic text-ink hover:opacity-80 active:opacity-80 transition-opacity"
               >
                 <img 
                     src="/assets/maxihub-logo.png" 
-                    className='h-25 w-auto object-contain transition-opacity hover:opacity-70 duration-400'
+                    className='h-25 w-auto object-contain transition-opacity hover:opacity-70 active:opacity-70 duration-400'
                 />
                
               </Link>
@@ -98,13 +98,13 @@ const Navbar = ({ onCartClick }) => {
             <div className="hidden md:flex space-x-12">
               <Link
                 to="/shop"
-                className="text-xs uppercase tracking-[0.2em] font-medium text-ink hover:text-accent transition-colors"
+                className="text-xs uppercase tracking-[0.2em] font-medium text-ink hover:text-accent active:text-accent transition-colors"
               >
                 Shop
               </Link>
               <Link
                 to="/about"
-                className="text-xs uppercase tracking-[0.2em] font-medium text-ink hover:text-accent transition-colors"
+                className="text-xs uppercase tracking-[0.2em] font-medium text-ink hover:text-accent active:text-accent transition-colors"
               >
                 Our Story
               </Link>
@@ -114,7 +114,7 @@ const Navbar = ({ onCartClick }) => {
             <div className="flex items-center space-x-6">
               {/* Search Icon - now opens the overlay */}
               <Search
-                className="h-5 w-5 cursor-pointer text-ink hover:text-accent transition-colors"
+                className="h-5 w-5 cursor-pointer text-ink hover:text-accent active:text-accent transition-colors"
                 onClick={() => setSearchOpen(true)}
               />
 
@@ -124,7 +124,7 @@ const Navbar = ({ onCartClick }) => {
                 className="relative group p-1"
                 aria-label="Open Cart"
               >
-                <ShoppingBag className="h-5 w-5 cursor-pointer text-ink group-hover:text-accent transition-colors" />
+                <ShoppingBag className="h-5 w-5 cursor-pointer text-ink group-hover:text-accent active:text-accent transition-colors" />
 
                 {/* Notification Badge */}
                 {cartCount > 0 && (
@@ -147,14 +147,14 @@ const Navbar = ({ onCartClick }) => {
               <Link
                 to="/shop"
                 onClick={() => setIsOpen(false)}
-                className="block px-3 py-2 text-sm uppercase tracking-[0.2em] font-medium text-ink hover:text-accent transition-colors"
+                className="block px-3 py-2 text-sm uppercase tracking-[0.2em] font-medium text-ink hover:text-accent active:text-accent transition-colors"
               >
                 Shop Collection
               </Link>
               <Link
                 to="/about"
                 onClick={() => setIsOpen(false)}
-                className="block px-3 py-2 text-sm uppercase tracking-[0.2em] font-medium text-ink hover:text-accent transition-colors"
+                className="block px-3 py-2 text-sm uppercase tracking-[0.2em] font-medium text-ink hover:text-accent active:text-accent transition-colors"
               >
                 Our Story
               </Link>
@@ -275,7 +275,7 @@ const Navbar = ({ onCartClick }) => {
           setSearchOpen(false);
           setSearchTerm('');
         }}
-        className="p-2 hover:rotate-90 transition-transform duration-500"
+        className="p-2 hover:rotate-90 active:rotate-90 transition-transform duration-500"
       >
         <X className="h-6 w-6 text-ink" />
       </button>
@@ -339,7 +339,7 @@ const Navbar = ({ onCartClick }) => {
               <button 
                 key={tag}
                 onClick={() => setSearchTerm(tag)}
-                className="font-serif px-4 py-2 border border-ink/10 rounded-full text-xs uppercase tracking-[0.2em] hover:bg-accent hover:text-white transition-all"
+                className="font-serif px-4 py-2 border border-ink/10 rounded-full text-xs uppercase tracking-[0.2em] hover:bg-accent active:bg-accent hover:text-white active:text-white transition-all"
               >
                 {tag}
               </button>
