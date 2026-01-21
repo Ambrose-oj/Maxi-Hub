@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Menu, ShoppingBag, Search, X } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 import { useNavigate } from 'react-router-dom';
-import { products } from '/data/products'; 
+import { products } from "../../../data/Products";
 
 const Navbar = ({ onCartClick }) => {
   // --- Mobile Menu Logic 
