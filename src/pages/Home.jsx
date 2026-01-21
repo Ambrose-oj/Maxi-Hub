@@ -70,7 +70,7 @@ export default function Home() {
         {/* Primary Button - Links to Shop */}
             <Link
               to="/shop"
-              className="bg-ink text-white px-12 py-4 rounded-full border border-ink hover:bg-accent hover:border-accent transition-all duration-500 text-xs font-semibold tracking-[0.2em] uppercase inline-flex items-center justify-center"
+              className="bg-ink text-white px-12 py-4 rounded-full border border-ink hover:bg-accent active:bg-accent hover:border-accent active:border-accent transition-all duration-500 text-xs font-semibold tracking-[0.2em] uppercase inline-flex items-center justify-center"
         >
                 Shop The Collection
             </Link>
@@ -78,7 +78,7 @@ export default function Home() {
         {/* Secondary Button - Now Links to Quiz */}
             <Link
               to="/quiz"
-              className="backdrop-blur-md bg-white/10 border border-ink/20 text-ink px-12 py-4 rounded-full hover:bg-accent hover:text-white hover:border-accent transition-all duration-500 shadow-sm text-xs font-semibold tracking-[0.2em] uppercase inline-flex items-center justify-center"
+              className="backdrop-blur-md bg-white/10 border border-ink/20 text-ink px-12 py-4 rounded-full hover:bg-accent active:bg-accent hover:text-white active:text-white hover:border-accent active:border-accent transition-all duration-500 shadow-sm text-xs font-semibold tracking-[0.2em] uppercase inline-flex items-center justify-center"
         >
                 Find Your Scent
             </Link>
