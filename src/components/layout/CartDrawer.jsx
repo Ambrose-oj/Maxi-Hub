@@ -192,7 +192,7 @@ const CartDrawer = ({ isOpen, onClose }) => {
               }`}
             >
               <div className="absolute inset-0 bg-accent translate-y-full group-hover:translate-y-0 group-active:translate-y-0 transition-transform duration-500 ease-out" />
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-150%] group-hover:translate-x-[150%] group-active:translate-x-[150%] transition-transform duration-1200 ease-in-out" />
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-150%] group-hover:translate-x-[150%] group-active:translate-x-[150%] transition-transform duration-500 ease-in-out" />
               <span className="relative z-10 uppercase tracking-[0.4em] text-[11px] font-bold transition-colors duration-400 group-hover:text-ink group-active:text-ink">
                 Proceed to Checkout
               </span>
