@@ -185,15 +185,15 @@ const CartDrawer = ({ isOpen, onClose }) => {
 
             <button
               disabled={cart.length === 0}
-              className={`relative w-full py-6 rounded-full overflow-hidden group transition-all duration-700 ease-out shadow-2xl ${
+              className={`relative w-full py-6 rounded-full overflow-hidden group transition-all duration-400 ease-out shadow-2xl ${
                 cart.length === 0
                   ? 'bg-ink/20 cursor-not-allowed'
                   : 'bg-ink text-white cursor-pointer hover:scale-[1.02] active:scale-[1.02] hover:shadow-ink/50 active:shadow-ink/50'
               }`}
             >
-              <div className="absolute inset-0 bg-accent translate-y-full group-hover:translate-y-0 group-active:translate-y-0 transition-transform duration-500 ease-out" />
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-150%] group-hover:translate-x-[150%] group-active:translate-x-[150%] transition-transform duration-500 ease-in-out" />
-              <span className="relative z-10 uppercase tracking-[0.4em] text-[11px] font-bold transition-colors duration-400 group-hover:text-ink group-active:text-ink">
+              <div className="absolute inset-0 bg-accent translate-y-full group-hover:translate-y-0 group-active:translate-y-0 transition-transform duration-400 ease-out" />
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-150%] group-hover:translate-x-[150%] group-active:translate-x-[150%] transition-transform duration-400 ease-in-out" />
+              <span className="relative z-10 uppercase tracking-[0.4em] text-[11px] font-bold transition-colors duration-300 group-hover:text-ink group-active:text-ink">
                 Proceed to Checkout
               </span>
             </button>

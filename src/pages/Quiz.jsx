@@ -155,10 +155,10 @@ const Quiz = () => {
                 <button
                   key={mood}
                   onClick={() => handleNext(mood)} 
-                  className="group relative overflow-hidden border border-ink/10 py-5 px-8 text-center transition-all duration-400 hover:border-accent active:border-accent"
+                  className="group relative overflow-hidden border border-ink/10 py-5 px-8 text-center transition-all duration-300 hover:border-accent active:border-accent"
                 >
-                  <div className="absolute inset-0 bg-accent translate-y-full group-hover:translate-y-0 group-active:translate-y-0 transition-transform duration-400" />
-                  <span className="relative z-10 uppercase tracking-[0.3em] text-[11px] font-medium text-ink group-hover:text-white group-active:text-white transition-colors duration-400">
+                  <div className="absolute inset-0 bg-accent translate-y-full group-hover:translate-y-0 group-active:translate-y-0 transition-transform duration-300" />
+                  <span className="relative z-10 uppercase tracking-[0.3em] text-[11px] font-medium text-ink group-hover:text-white group-active:text-white transition-colors duration-300">
                     {mood}
                   </span>
                 </button>
@@ -171,7 +171,7 @@ const Quiz = () => {
             {quizSteps.map((_, index) => (
               <div
                 key={index}
-                className={`h-[2px] w-8 transition-colors duration-600 ${
+                className={`h-[2px] w-8 transition-colors duration-300 ${
                   index <= currentStep ? 'bg-accent' : 'bg-ink/10'
                 }`}
               />
